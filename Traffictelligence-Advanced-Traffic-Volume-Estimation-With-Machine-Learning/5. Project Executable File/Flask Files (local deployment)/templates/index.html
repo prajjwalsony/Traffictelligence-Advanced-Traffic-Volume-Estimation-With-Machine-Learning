@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+select { 
+	width: 100%; 
+	margin-bottom: 10px; 
+	background: #fff;
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #092756;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+}
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	  <h4>Predict the Traffic Volume </h4>
+
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action= "/y_predict" method="post">
+        <input type="number" name="temp" placeholder="Tempreture in Celsius" step = 0.01 required="required" />
+        <input type="number" name="rain" placeholder="Rain" step = 0.01 required="required" />
+		<select name="weather" required="required">
+		  <option value="">Select Weather Condition </option>
+		  <option value= Clouds>Clouds</option>
+		  <option value=  Clear>Clear</option>
+		  <option value= Rain>Rain</option>
+		  <option value=  Drizzle>Drizzle</option>
+		  <option value= Mist>Mist</option>
+		  <option value=  Haze>Haze</option>
+		  <option value= Fog>Fog</option>
+		  <option value=  Thunderstorm>Thunderstorm</option>
+		  <option value= Snow>Snow</option>
+		  <option value=  Squall>Squall</option>
+		  <option value= Smoke>Smoke</option>
+		</select>
+        <input type="time" name="time" placeholder="Time" required="required" />
+        <input type="date" name="date" placeholder="date" required="required" />
+        <button type="submit" class="btn btn-warning btn-block btn-large">Predict</button>
+
+
+    
+
+    
+   <br>
+   <br>
+    <h3> The Predicted Traffic Volume is {{ prediction_text }} </h3>
+ </div>
+
+
+</body>
+</html>
+
